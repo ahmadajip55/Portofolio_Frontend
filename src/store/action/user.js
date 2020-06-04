@@ -27,7 +27,7 @@ export const doLoginPembeli = () => {
     const password = getState().user.inputPassword;
     if (username !== "" && password !== "") {
       try {
-        const response = await axios.get("http://0.0.0.0:3000/pembeli/login", {
+        const response = await axios.get("https://shop_be.ajay-rocks.xyz/pembeli/login", {
           params: {
             username: username,
             password: password,
@@ -58,7 +58,7 @@ export const doLoginPelapak = () => {
     const password = getState().user.inputPassword;
     if (username !== "" && password !== "") {
       try {
-        const response = await axios.get("http://0.0.0.0:3000/pelapak/login", {
+        const response = await axios.get("https://shop_be.ajay-rocks.xyz/pelapak/login", {
           params: {
             username: username,
             password: password,
@@ -97,7 +97,7 @@ export const doRegisterPembeli = () => {
     ) {
       try {
         const response_register = await axios.post(
-          "http://0.0.0.0:3000/pembeli/register",
+          "https://shop_be.ajay-rocks.xyz/pembeli/register",
           {
             username: username,
             password: password,
@@ -136,7 +136,7 @@ export const doRegisterPelapak = () => {
     ) {
       try {
         const response_register = await axios.post(
-          "http://0.0.0.0:3000/pelapak/register",
+          "https://shop_be.ajay-rocks.xyz/pelapak/register",
           {
             username: username,
             password: password,

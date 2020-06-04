@@ -88,19 +88,19 @@ const Footer = () => {
             <h6 class="text-uppercase mb-4 font-weight-bold">Kontak</h6>
             <p>
               <a
-                href="http://instagram.com/ahmadajip"
+                href="https://instagram.com/ahmadajip"
                 className="text-secondary"
               >
                 <i class="fab fa-instagram mr-3"></i> instagram.com/ahmadajip
               </a>
             </p>
             <p>
-              <a href="http://twitter.com/ahmadajip" className="text-secondary">
+              <a href="https://twitter.com/ahmadajip" className="text-secondary">
                 <i class="fab fa-twitter mr-3"></i> twitter.com/ahmadajip
               </a>
             </p>
             <p>
-              <a href="http://fb.com/ahmadajip55" className="text-secondary">
+              <a href="https://fb.com/ahmadajip55" className="text-secondary">
                 <i class="fab fa-facebook-f mr-4"></i> fb.com/ahmadajip
               </a>
             </p>

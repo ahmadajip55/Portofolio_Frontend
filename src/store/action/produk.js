@@ -9,7 +9,7 @@ export const changeInput = (e) => {
 
 export const getListProduk = () => {
   return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:3000/produk");
+    const response = await axios.get("https://shop_be.ajay-rocks.xyz/produk");
     dispatch({ type: "GET_LIST_PRODUK", payload: response.data });
   };
 };
@@ -68,7 +68,7 @@ export const doPostProduk = () => {
     ) {
       try {
         const response = await axios.post(
-          "http://0.0.0.0:3000/produk/edit",
+          "https://shop_be.ajay-rocks.xyz/produk/edit",
           {
             nama_produk: namaProduk,
             harga: harga,
@@ -107,7 +107,7 @@ export const deleteProduk = () => {
     console.log("token", token);
     try {
       await axios.delete(
-        "http://0.0.0.0:3000/produk/edit",
+        "https://shop_be.ajay-rocks.xyz/produk/edit",
         { params: { nama_produk: namaProduk } },
         { headers: { Authorization: "Bearer " + token } }
       );
@@ -141,7 +141,7 @@ export const updateProduk = () => {
     ) {
       try {
         const response = await axios.put(
-          "http://0.0.0.0:3000/produk/edit",
+          "https://shop_be.ajay-rocks.xyz/produk/edit",
           {
             nama_produk: namaProduk,
             harga: harga,

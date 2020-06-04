@@ -21,7 +21,7 @@ export const postProdukTransaksi = (e) => {
     const token = localStorage.getItem("token");
 
     await axios.post(
-      "http://0.0.0.0:3000/transaksi",
+      "https://shop_be.ajay-rocks.xyz/transaksi",
       {
         nama_produk: localStorage.getItem("nama_produk"),
       },
@@ -35,7 +35,7 @@ export const getProdukTransaksi = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
 
-    const response = await axios.get("http://0.0.0.0:3000/transaksi", {
+    const response = await axios.get("https://shop_be.ajay-rocks.xyz/transaksi", {
       headers: { Authorization: "Bearer " + token },
     });
     dispatch({ type: "GET_PRODUK_TRANSAKSI", payload: response.data });
