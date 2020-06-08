@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "reak"
+  namespace: "alta3"
+spec:
+  selector:
+    matchLabels:
+      app: "reak"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "reak"
+    spec:
+      containers:
+      - image: ahmadajip55/react-tutorial:1.0
+        imagePullPolicy: Always
+        name: "reak"
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "reak-svc"
+  namespace: "alta3"
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: "reak"
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "reak-ingress"
+  namespace: "alta3"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - secretName: tls-secrets
+  rules:
+    - host: shop.ajay-rocks.xyz
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: reak-svc
+              servicePort: 80
