@@ -21,31 +21,29 @@ class Transaksi extends Component {
         <Header />
         <div className="container my-4">
           <h2 className="mb-5">Transaksi</h2>
-          <div className="row ">
-            {this.props.dataTransaksi.listProdukTransaksi
-              ? this.props.dataTransaksi.listProdukTransaksi.map((item) => (
-                <div>
-                  <div className="col-lg-2"></div>
+          {this.props.dataTransaksi.listProdukTransaksi
+            ? this.props.dataTransaksi.listProdukTransaksi.map((item) => (
+              <div className="row ">
+                <div className="col-lg-2"></div>
+                <div
+                  className="col-lg-8 border border-light shadow mb-3 p-0"
+                  style={{ borderRadius: "50px" }}
+                >
                   <div
-                    className="col-lg-8 border border-light shadow mb-3 p-0"
-                    style={{ borderRadius: "50px" }}
+                    className="col-lg-12 px-4 pt-4 pb-0"
+                    style={{ wordWrap: "break-word" }}
                   >
-                    <div
-                      className="col-lg-12 px-4 pt-4 pb-0"
-                      style={{ wordWrap: "break-word" }}
-                    >
-                      <p className="h1">
-                        <strong>{item.produk[0].nama_produk}</strong>
-                      </p>
-                      <p>{"Rp " + item.total_harga + ",00"}</p>
-                      <p>{"jumlah : " + item.total_barang + " buah"}</p>
-                    </div>
+                    <p className="h1">
+                      <strong>{item.produk[0].nama_produk}</strong>
+                    </p>
+                    <p>{"Rp " + item.total_harga + ",00"}</p>
+                    <p>{"jumlah : " + item.total_barang + " buah"}</p>
                   </div>
-                  <div className="col-lg-2"></div>
                 </div>
-              ))
-              : null}
-          </div>
+                <div className="col-lg-2"></div>
+              </div>
+            ))
+            : null}
         </div>
         <Footer />
       </React.Fragment>

@@ -17,7 +17,19 @@ export const addProdukTransaksi = (e) => {
 };
 
 export const postProdukTransaksi = (e) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    let jumlahProduk = await localStorage.getItem("jumlahProdukTransaksi");
+
+    if (jumlahProduk === undefined) {
+      jumlahProduk = 0;
+    }
+
+    await dispatch({ type: "ADD_PRODUK_TRANSAKSI", payload: e });
+    await localStorage.setItem("nama_produk", getState().transaksi.produk);
+
+    let jumlahProdukTransaksi = await Number(jumlahProduk) + 1;
+    await localStorage.setItem("jumlahProdukTransaksi", jumlahProdukTransaksi);
+
     const token = localStorage.getItem("token");
 
     await axios.post(
