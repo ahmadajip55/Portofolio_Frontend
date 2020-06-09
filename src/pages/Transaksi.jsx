@@ -22,9 +22,10 @@ class Transaksi extends Component {
         <div className="container my-4">
           <h2 className="mb-5">Transaksi</h2>
           <div className="row ">
-            <div className="col-lg-2"></div>
             {this.props.dataTransaksi.listProdukTransaksi
               ? this.props.dataTransaksi.listProdukTransaksi.map((item) => (
+                <div>
+                  <div className="col-lg-2"></div>
                   <div
                     className="col-lg-8 border border-light shadow mb-3 p-0"
                     style={{ borderRadius: "50px" }}
@@ -40,9 +41,10 @@ class Transaksi extends Component {
                       <p>{"jumlah : " + item.total_barang + " buah"}</p>
                     </div>
                   </div>
-                ))
+                  <div className="col-lg-2"></div>
+                </div>
+              ))
               : null}
-            <div className="col-lg-2"></div>
           </div>
         </div>
         <Footer />

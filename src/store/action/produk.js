@@ -106,18 +106,25 @@ export const deleteProduk = () => {
     console.log("namaproduk", namaProduk);
     console.log("token", token);
     try {
-      await axios.delete(
-        "https://shop_be.ajay-rocks.xyz/produk/edit",
-        { params: { nama_produk: namaProduk } },
+      const response = await axios.delete(`https://shop_be.ajay-rocks.xyz/produk/edit?nama_produk=${namaProduk}`,
+
         { headers: { Authorization: "Bearer " + token } }
       );
-      dispatch({ type: "DELETE PRODUK" });
+      dispatch({ type: "DELETE PRODUK", payload: response });
       console.log("namaproduk", namaProduk);
       console.log("token", token);
       alert("produk dihapus");
     } catch (error) {
       alert("produk bukan milik pelapak");
     }
+    // axios({
+    //   method: 'delete',
+    //   url: 'https://shop_be.ajay-rocks.xyz/produk/edit?nama_produk=COBA1',
+    //   // params: {
+    //   //   nama_produk: 'COBA2'
+    //   // },
+    //   headers: { Authorization: "Bearer " + cobaToken }
+    // });
   };
 };
 
