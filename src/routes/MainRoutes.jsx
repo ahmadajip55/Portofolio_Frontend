@@ -16,6 +16,7 @@ import TambahProduk from "../pages/TambahProduk";
 import ProdukPelapak from "../pages/Produk Pelapak";
 import ProdukUpdate from "../pages/ProdukUpdate";
 import Transaksi from "../pages/Transaksi";
+import Pesan from "../pages/Pesan";
 
 const MainRoutes = () => {
   return (
@@ -39,6 +40,7 @@ const MainRoutes = () => {
           <Route exact path="/produkkategori/:produk" component={Produk} />
           <Route exact path="/produkupdate" component={ProdukUpdate} />
           <Route exact path="/transaksi" component={Transaksi} />
+          <Route exact path="/pesan" component={Pesan} />
         </Switch>
       </BrowserRouter>
     </Provider>

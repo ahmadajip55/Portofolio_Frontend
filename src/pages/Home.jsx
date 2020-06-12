@@ -11,14 +11,19 @@ import {
   filterProdukKategori,
   changeInput,
 } from "../store/action/produk";
+import {
+  getProdukTransaksi
+} from "../store/action/transaksi";
 
 class Home extends Component {
   componentDidMount = async () => {
+    if (localStorage.getItem("status") === "pembeli") {
+      await this.props.getProdukTransaksi();
+    }
     await this.props.getListProduk();
     const paramKategori = await this.props.match.params.produk;
-    console.log("CEEK PARAM", paramKategori);
-    this.props.filterProdukKategori(paramKategori);
-    console.log("CEEEEEEK", this.props.dataProduk);
+
+    await this.props.filterProdukKategori(paramKategori);
   };
 
   render() {
@@ -216,6 +221,7 @@ const mapDispatchToProps = {
   getListProduk,
   filterProdukKategori,
   changeInput,
+  getProdukTransaksi
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

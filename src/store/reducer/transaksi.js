@@ -1,6 +1,8 @@
 const initialState = {
   listProdukTransaksi: "",
   jumlahProdukTransaksi: 0,
+  totalHargaTransaksi: 0,
+  postProdukHistory: ""
 };
 
 export default function transaksiReducer(
@@ -19,6 +21,13 @@ export default function transaksiReducer(
       return {
         ...transaksiState,
         listProdukTransaksi: action.payload,
+        jumlahProdukTransaksi: action.jumlahProduk,
+        totalHargaTransaksi: action.totalHarga
+      };
+    case "POST_PRODUK_HISTORY":
+      return {
+        ...transaksiState,
+        postProdukHistory: action.payload,
       };
     default:
       return {

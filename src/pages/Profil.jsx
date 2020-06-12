@@ -6,7 +6,15 @@ import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { changeInput } from "../store/action/user";
 
+import {
+  getProdukTransaksi,
+} from "../store/action/transaksi";
+
 class Profil extends Component {
+  componentDidMount = async () => {
+    await this.props.getProdukTransaksi();
+  };
+
   render() {
     if (localStorage.getItem("isLogin") !== "true") {
       return (
@@ -32,18 +40,25 @@ class Profil extends Component {
                 status : {localStorage.getItem("status")}
               </p>
               <p className="profil-title">{localStorage.getItem("alamat")}</p>
-              <p>
+              {localStorage.getItem("status") === "pelapak" ?
                 <Link to={"/user/produk/" + localStorage.getItem("username")}>
                   <button
                     className="profil-button btn btn-secondary mb-3"
                     name="username"
-                    value={localStorage.getItem("username")}
-                    onClick={(e) => this.props.changeInput(e)}
                   >
                     produk
                   </button>
                 </Link>
-              </p>
+                :
+                <Link to={"/transaksi"}>
+                  <button
+                    className="profil-button btn btn-secondary mb-3"
+                    name="username"
+                  >
+                    keranjang
+                  </button>
+                </Link>
+              }
             </div>
           </div>
           <Footer />
@@ -56,11 +71,13 @@ class Profil extends Component {
 const mapStateToProps = (state) => {
   return {
     dataUser: state.user,
+    dataTransaksi: state.transaksi
   };
 };
 
 const mapDispatchToProps = {
   changeInput,
+  getProdukTransaksi
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profil);

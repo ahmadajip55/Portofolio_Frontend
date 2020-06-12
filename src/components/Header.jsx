@@ -2,12 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { doLogout } from "../store/action/user";
+import {
+  getProdukTransaksi,
+} from "../store/action/transaksi";
+
 
 const token = localStorage.getItem("token");
 
 class Header extends Component {
+  // componentDidMount = async () => {
+  // await this.props.getProdukTransaksi();
+  // };
+
   render() {
-    console.log("ceeeek token", token);
+    console.log("ceeeek props header", this.props);
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div className="container">
@@ -148,70 +156,70 @@ class Header extends Component {
                   </div>
                 </div>
               ) : (
-                <div className="row mb-0">
-                  <div className="col-lg-6 pr-0 my-0">
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="."
-                        id="navbarDropdown"
-                        role="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Masuk
+                  <div className="row mb-0">
+                    <div className="col-lg-6 pr-0 my-0">
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle"
+                          href="."
+                          id="navbarDropdown"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Masuk
                       </a>
-                      <div
-                        className="dropdown-menu"
-                        aria-labelledby="navbarDropdown"
-                      >
-                        <li className="dropdown-item">
-                          <a href="/masuk/pelapak" className="text-secondary">
-                            Pelapak
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdown"
+                        >
+                          <li className="dropdown-item">
+                            <a href="/masuk/pelapak" className="text-secondary">
+                              Pelapak
                           </a>
-                        </li>
-                        <li className="dropdown-item">
-                          <a href="/masuk/pembeli" className="text-secondary">
-                            Pembeli
+                          </li>
+                          <li className="dropdown-item">
+                            <a href="/masuk/pembeli" className="text-secondary">
+                              Pembeli
                           </a>
-                        </li>
-                      </div>
-                    </li>
-                  </div>
+                          </li>
+                        </div>
+                      </li>
+                    </div>
 
-                  <div className="col-lg-6 pr-0 my-0">
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="."
-                        id="navbarDropdown"
-                        role="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Daftar
+                    <div className="col-lg-6 pr-0 my-0">
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle"
+                          href="."
+                          id="navbarDropdown"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Daftar
                       </a>
-                      <div
-                        className="dropdown-menu"
-                        aria-labelledby="navbarDropdown"
-                      >
-                        <li className="dropdown-item">
-                          <a href="/daftar/pelapak" className="text-secondary">
-                            Pelapak
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdown"
+                        >
+                          <li className="dropdown-item">
+                            <a href="/daftar/pelapak" className="text-secondary">
+                              Pelapak
                           </a>
-                        </li>
-                        <li className="dropdown-item">
-                          <a className="text-secondary" href="/daftar/pembeli">
-                            Pembeli
+                          </li>
+                          <li className="dropdown-item">
+                            <a className="text-secondary" href="/daftar/pembeli">
+                              Pembeli
                           </a>
-                        </li>
-                      </div>
-                    </li>
+                          </li>
+                        </div>
+                      </li>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </ul>
           </div>
 
@@ -225,7 +233,7 @@ class Header extends Component {
             </ul>
             <div class="badge badge-pill badge-secondary text-secondary mb-3 ml-1">
               <p class="text-white mb-0" style={{ fontSize: "12px" }}>
-                {localStorage.getItem("jumlahProdukTransaksi")}
+                {this.props.dataTransaksi.jumlahProdukTransaksi}
               </p>
             </div>
           </div>
@@ -238,11 +246,13 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     dataUser: state.user,
+    dataTransaksi: state.transaksi
   };
 };
 
 const mapDispatchToProps = {
   doLogout,
+  getProdukTransaksi
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

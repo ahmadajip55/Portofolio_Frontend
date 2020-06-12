@@ -6,12 +6,18 @@ import ListProduk from "../components/ListProduk";
 
 import { connect } from "react-redux";
 import { getListProduk, filterProdukKategori } from "../store/action/produk";
+import {
+  getProdukTransaksi,
+} from "../store/action/transaksi";
 
 class Produk extends Component {
   componentDidMount = async () => {
+    if (localStorage.getItem("status") === "pembeli") {
+      await this.props.getProdukTransaksi();
+    }
     await this.props.getListProduk();
     const paramKategori = await this.props.match.params.produk;
-    this.props.filterProdukKategori(paramKategori);
+    await this.props.filterProdukKategori(paramKategori);
   };
 
   render() {
@@ -54,6 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getListProduk,
   filterProdukKategori,
+  getProdukTransaksi
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Produk);

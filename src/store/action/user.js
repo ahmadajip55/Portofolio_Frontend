@@ -170,6 +170,7 @@ export const doLogout = () => {
   localStorage.removeItem("email");
   localStorage.removeItem("jumlahProdukTransaksi");
   localStorage.removeItem("nama_produk");
+  localStorage.removeItem("jumlahBarang")
   return {
     type: "DO_LOGOUT",
   };
